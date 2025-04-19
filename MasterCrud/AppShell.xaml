@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MasterCrud.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MasterCrud"
+    xmlns:c="clr-namespace:MasterCrud.Pages"
+    Shell.FlyoutBehavior="Flyout"
+    Title="MasterCrud">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+    <ShellContent
+        Title="Category"
+        ContentTemplate="{DataTemplate c:CategoryList}"
+        Route="CategoryList"/>
+    <ShellContent
+        Title="Add New"
+        ContentTemplate="{DataTemplate c:CategoryCreate}"
+        Route="CategoryCreate"/>
+    <ShellContent
+     Title="QuestionPage"
+     ContentTemplate="{DataTemplate c:QuestionPage}"
+     Route="QuestionPage"/>
+</Shell>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MasterCrud.Pages.CategoryCreate"
+             Title="CategoryCreate">
+
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="30">
+
+            <!-- Category Info -->
+            <Frame CornerRadius="12" Padding="20" BackgroundColor="White" HasShadow="True">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Category Information" FontSize="18" FontAttributes="Bold" />
+                    <Entry x:Name="CategoryNameEntry"
+                           Placeholder="Category Name"
+                           FontSize="14"
+                           BackgroundColor="#F5F5F5"
+                           HeightRequest="44"
+           
+                           Margin="0,5" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Products List -->
+            <Frame CornerRadius="12" Padding="20" BackgroundColor="White" HasShadow="True">
+                <VerticalStackLayout Spacing="15">
+
+                    <!-- Header -->
+                    <HorizontalStackLayout>
+                        <Label Text="Products" FontSize="18" FontAttributes="Bold" HorizontalOptions="StartAndExpand" />
+                        <Button Text="+ Add Product"
+                                Clicked="OnAddProductClicked"
+                                BackgroundColor="#0078D4"
+                                TextColor="White"
+                                HeightRequest="36"
+                                CornerRadius="8"
+                                FontSize="14" />
+                    </HorizontalStackLayout>
+
+                    <!-- Column Headers -->
+                    <Grid ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="1.5*" />
+                            <ColumnDefinition Width="1.5*" />
+                            <ColumnDefinition Width="1.5*" />
+                            <ColumnDefinition Width="1.5*" />
+                            <ColumnDefinition Width="1.5*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Name" FontAttributes="Bold" FontSize="13" Grid.Column="0" />
+                        <Label Text="Number" FontAttributes="Bold" FontSize="13" Grid.Column="1" />
+                        <Label Text="Color" FontAttributes="Bold" FontSize="13" Grid.Column="2" />
+                        <Label Text="Cost" FontAttributes="Bold" FontSize="13" Grid.Column="3" />
+                        <Label Text="Price" FontAttributes="Bold" FontSize="13" Grid.Column="4" />
+                        <Label Text="Size" FontAttributes="Bold" FontSize="13" Grid.Column="5" />
+                        <Label Text="Weight" FontAttributes="Bold" FontSize="13" Grid.Column="6" />
+                    </Grid>
+
+                    <!-- Product Rows -->
+                    <CollectionView x:Name="ProductCollectionView"
+                                    ItemsSource="{Binding Products}"
+                                    SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid ColumnSpacing="10" Padding="5">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="1.5*" />
+                                        <ColumnDefinition Width="1.5*" />
+                                        <ColumnDefinition Width="1.5*" />
+                                        <ColumnDefinition Width="1.5*" />
+                                        <ColumnDefinition Width="1.5*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Entry Text="{Binding Name, Mode=TwoWay}" Placeholder="Name" Grid.Column="0" FontSize="13" BackgroundColor="#F5F5F5" />
+                                    <Entry Text="{Binding ProductNumber, Mode=TwoWay}" Placeholder="Number" Grid.Column="1" FontSize="13" BackgroundColor="#F5F5F5" />
+                                    <Entry Text="{Binding Color, Mode=TwoWay}" Placeholder="Color" Grid.Column="2" FontSize="13" BackgroundColor="#F5F5F5" />
+                                    <Entry Text="{Binding StandardCost, Mode=TwoWay}" Placeholder="Cost" Grid.Column="3" FontSize="13" Keyboard="Numeric" BackgroundColor="#F5F5F5" />
+                                    <Entry Text="{Binding ListPrice, Mode=TwoWay}" Placeholder="Price" Grid.Column="4" FontSize="13" Keyboard="Numeric" BackgroundColor="#F5F5F5" />
+                                    <Entry Text="{Binding Size, Mode=TwoWay}" Placeholder="Size" Grid.Column="5" FontSize="13" BackgroundColor="#F5F5F5" />
+                                    <Entry Text="{Binding Weight, Mode=TwoWay}" Placeholder="Weight" Grid.Column="6" FontSize="13" BackgroundColor="#F5F5F5" />
+                                    <Button Text="🗑"
+                                            Clicked="OnDeleteProductClicked"
+                                            CommandParameter="{Binding .}"
+                                            BackgroundColor="#E81123"
+                                            TextColor="White"
+                                            FontSize="14"
+                                            WidthRequest="40"
+                                            HeightRequest="40"
+                                            CornerRadius="20"
+                                            Grid.Column="7"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button Text="💾 Save Category"
+                    Clicked="OnSaveCategoryClicked"
+                    BackgroundColor="#28A745"
+                    TextColor="White"
+                    FontSize="16"
+                    HeightRequest="50"
+                    CornerRadius="10" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

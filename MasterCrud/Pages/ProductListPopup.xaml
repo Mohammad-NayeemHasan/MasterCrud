@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MasterCrud.Pages.ProductListPopup"
+             Title="ProductListPopup">
+    <ScrollView>
+        <Grid Padding="20" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, *" ColumnDefinitions="*, *, *, *, *, *">
+            <!-- Products Section Title -->
+            <Label Text="Products" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" Grid.Row="0" Grid.ColumnSpan="5" />
+            <Button Text="Go to CategoryList" 
+        Clicked="OnNavigateToCategoryListClicked" 
+        VerticalOptions="Center" 
+        HorizontalOptions="Center" 
+        BackgroundColor="#0078D4"
+        TextColor="White"
+        CornerRadius="8" 
+                    Grid.Row="0"
+                    Grid.Column="5"/>
+            <!-- List of Products -->
+            <CollectionView ItemsSource="{Binding Products}" Grid.Row="1" Grid.ColumnSpan="6">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="5" CornerRadius="12" BackgroundColor="White" HasShadow="True">
+                            <Grid ColumnSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- Product Name -->
+                                <Label Text="{Binding Name}" FontSize="14" Grid.Column="0" VerticalOptions="Center" />
+
+                                <!-- Product Number -->
+                                <Label Text="{Binding ProductNumber}" FontSize="14" Grid.Column="1" VerticalOptions="Center" />
+
+                                <!-- Product Color -->
+                                <Label Text="{Binding Color}" FontSize="14" Grid.Column="2" VerticalOptions="Center" />
+
+                                <!-- Standard Cost -->
+                                <Label Text="{Binding StandardCost}" FontSize="14" Grid.Column="3" VerticalOptions="Center" />
+
+                                <!-- List Price -->
+                                <Label Text="{Binding ListPrice}" FontSize="14" Grid.Column="4" VerticalOptions="Center" />
+
+                                <!-- Product Size -->
+                                <Label Text="{Binding Size}" FontSize="14" Grid.Column="5" VerticalOptions="Center" />
+
+                                <!-- Product Weight -->
+                                <Label Text="{Binding Weight}" FontSize="14" Grid.Column="6" VerticalOptions="Center" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ScrollView>
+</ContentPage>

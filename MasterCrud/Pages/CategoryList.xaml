@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MasterCrud.Pages.CategoryList"
+             Title="CategoryList">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <!-- Category List -->
+            <CollectionView x:Name="CategoryCollectionView" 
+                            ItemsSource="{Binding Categories}"
+                            SelectionMode="None">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="10" Margin="5" CornerRadius="12" BackgroundColor="White" HasShadow="True">
+                            <Grid ColumnSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <!-- SN -->
+                                <Label Text="{Binding SN}" Grid.Column="0" VerticalOptions="Center" FontSize="14" />
+
+                                <!-- Category Name -->
+                                <Label Text="{Binding Name}" Grid.Column="1" VerticalOptions="Center" FontSize="14" />
+
+                                <!-- Number of Products -->
+                                <Label Text="{Binding NumberOfProducts}" 
+                                       Grid.Column="2" 
+                                       VerticalOptions="Center" 
+                                       FontSize="14"
+                                       TextColor="#0078D4">
+                                    <!-- Tap Gesture to open product list -->
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnNumberOfProductsTapped"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                                <!-- Edit Button -->
+                                <Button Text="Edit" 
+                                        Clicked="OnEditCategoryClicked"
+                                        CommandParameter="{Binding ProductCategoryID}" 
+                                        Grid.Column="3"
+                                        WidthRequest="70" 
+                                        BackgroundColor="#0078D4"
+                                        TextColor="White"
+                                        CornerRadius="8"
+                                        FontSize="12" />
+
+                                <!-- Delete Button -->
+                                <Button Text="Delete" 
+                                        Clicked="OnDeleteCategoryClicked"
+                                        CommandParameter="{Binding ProductCategoryID}" 
+                                        Grid.Column="4"
+                                        WidthRequest="70" 
+                                        BackgroundColor="#E81123"
+                                        TextColor="White"
+                                        CornerRadius="8"
+                                        FontSize="12" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

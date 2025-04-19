@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MasterCrud.Pages.QuestionPage"
+             Title="QuestionPage">
+    <ScrollView>
+
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <Label Text="প্রশ্নপত্র" FontSize="Large" TextColor="Green" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+            <Entry x:Name="instituteEntry" Placeholder="Institute Name" />
+            <Entry x:Name="departmentEntry" Placeholder="Department" />
+            <Entry x:Name="examEntry" Placeholder="Exam Name" />
+            <Entry x:Name="sectionEntry" Placeholder="Section Name" />
+            <Entry x:Name="technologyEntry" Placeholder="Technology Name" />
+            <Entry x:Name="subjectNameEntry" Placeholder="Subject Name" />
+            <Entry x:Name="subjectCodeEntry" Placeholder="Subject Code" />
+            <!--<Entry x:Name="marksEntry" Placeholder="Marks" />-->
+            <!--<Label Text="Full Marks" FontAttributes="Bold" />-->
+            <Picker x:Name="markPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Full Marks</x:String>
+                        <x:String>10</x:String>
+                        <x:String>20</x:String>
+                        <x:String>30</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Entry x:Name="timeEntry" Placeholder="Time" />
+
+            <!-- ক-বিভাগ Section -->
+            <Label Text="ক-বিভাগ (৪টি প্রশ্ন)" FontAttributes="Bold" FontSize="Medium" />
+            <Entry x:Name="sectionAQuestion1" Placeholder="প্রশ্ন ১" />
+            <Entry x:Name="sectionAQuestion2" Placeholder="প্রশ্ন ২" />
+            <Entry x:Name="sectionAQuestion3" Placeholder="প্রশ্ন ৩" />
+            <Entry x:Name="sectionAQuestion4" Placeholder="প্রশ্ন ৪" />
+
+            <!-- খ-বিভাগ Section -->
+            <Label Text="খ-বিভাগ (২টি প্রশ্ন)" FontAttributes="Bold" FontSize="Medium" />
+            <Entry x:Name="sectionBQuestion1" Placeholder="প্রশ্ন ৫" />
+            <Entry x:Name="sectionBQuestion2" Placeholder="প্রশ্ন ৬" />
+
+            <!-- গ-বিভাগ Section -->
+            <Label Text="গ-বিভাগ (২টি প্রশ্ন)" FontAttributes="Bold" FontSize="Medium" />
+            <Entry x:Name="sectionCQuestion1" Placeholder="প্রশ্ন ৭" />
+            <Entry x:Name="sectionCQuestion2" Placeholder="প্রশ্ন ৮" />
+
+            <!-- Submit Button -->
+            <Button Text="Generate PDF" Clicked="OnGeneratePdfClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
